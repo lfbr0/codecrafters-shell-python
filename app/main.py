@@ -16,7 +16,11 @@ def handle_input(input_args):
                         exit(exit_code)
                     except ValueError:
                         print(f"exit: return code {input_args[1]} is not an integer!")
-                    
+            
+            #handle echo
+            case 'echo':
+                print(' '.join(input_args[1:]))
+            
             #default case
             case _:
                 print(f"{input_args[0]}: command not found")   
