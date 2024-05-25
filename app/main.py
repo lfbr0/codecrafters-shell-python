@@ -3,6 +3,7 @@ import sys
 
 def main():
 
+    #list of recognized commands
     recognized_commands = []
 
     try:
