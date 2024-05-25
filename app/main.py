@@ -1,10 +1,7 @@
 import sys
-
+from command_handler import handle_input
 
 def main():
-
-    #list of recognized commands
-    recognized_commands = []
 
     try:
         #app loop
@@ -15,17 +12,14 @@ def main():
 
             # Wait for user input & split into space strings
             input_args = input().split()
-
-            if input_args[0] not in recognized_commands:
-                print(f"{input_args[0]}: command not found")
-        
+            
+            #handle inputs
+            handle_input(input_args)
+            
         #continue
         pass
     except KeyboardInterrupt:
         pass #ignore, user wants to quit shell
-
-
-
 
 
 if __name__ == "__main__":
