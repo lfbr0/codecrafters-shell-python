@@ -53,7 +53,7 @@ def handle_input(input_args):
                     #if found execute it, and redirect stdout of it to this out
                     program_args = input_args[1:]
                     program_process = subprocess.run([program_path] + program_args, capture_output=True, text=True)
-                    print(program_process.stdout)
+                    print(program_process.stdout.strip())
 
 """
 Find executable in PATH variable and return its path...
