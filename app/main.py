@@ -2,6 +2,7 @@ import sys
 import shutil
 import os
 
+#shell builtin commands
 SHELL_BUILTINS = [
     'echo',
     'exit',
