@@ -1,6 +1,6 @@
 import sys
 import shutil
-import os
+import subprocess
 
 #shell builtin commands
 SHELL_BUILTINS = [
@@ -44,9 +44,16 @@ def handle_input(input_args):
                         else:
                             print(f"{type_target} is {type_target_path}")
             
-            #default case
+            #default case -> try to find program in PATH
             case _:
-                print(f"{input_args[0]}: command not found")   
+                program_path = find_executable(input_args[0])
+                if program_path == None:
+                    print(f"{input_args[0]}: command not found")
+                else:
+                    #if found execute it, and redirect stdout of it to this out
+                    program_args = input_args[1:]
+                    program_process = subprocess.run([program_path] + program_args, capture_output=True, text=True)
+                    print(program_process.stdout)
 
 """
 Find executable in PATH variable and return its path...
