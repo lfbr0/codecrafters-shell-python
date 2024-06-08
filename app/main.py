@@ -1,7 +1,7 @@
 import sys
 import shutil
 import subprocess
-from os import getcwd as cwd
+from os import getcwd as cwd, chdir
 
 #shell builtin commands
 SHELL_BUILTINS = [
@@ -29,9 +29,18 @@ def handle_input(input_args):
             #handle echo
             case 'echo':
                 print(' '.join(input_args[1:]))
-                
+            
+            #handle pwd command
             case 'pwd':
                 print(cwd())
+            
+            #handle cd command
+            case 'cd':
+                path = input_args[1] if len(input_args) >= 2 else "."
+                try:
+                    chdir(path=path)
+                except FileNotFoundError:
+                    print(f"cd: {path}: No such file or directory")
             
             #handle type
             case 'type':
