@@ -1,7 +1,7 @@
 import sys
 import shutil
 import subprocess
-from os import getcwd as cwd, chdir
+from os import getcwd as cwd, chdir, path as osp
 
 #shell builtin commands
 SHELL_BUILTINS = [
@@ -36,7 +36,11 @@ def handle_input(input_args):
             
             #handle cd command
             case 'cd':
+                #capture path, if not assume current folder
                 path = input_args[1] if len(input_args) >= 2 else "."
+                # check for alias of homefolder
+                path = path if path.strip() != "~" else osp.expanduser("~")
+                #change dir
                 try:
                     chdir(path)
                 except FileNotFoundError:
