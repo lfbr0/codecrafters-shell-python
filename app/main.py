@@ -38,7 +38,7 @@ def handle_input(input_args):
             case 'cd':
                 path = input_args[1] if len(input_args) >= 2 else "."
                 try:
-                    chdir(path=path)
+                    chdir(path)
                 except FileNotFoundError:
                     print(f"cd: {path}: No such file or directory")
             
