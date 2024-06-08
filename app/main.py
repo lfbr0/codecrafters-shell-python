@@ -1,6 +1,7 @@
 import sys
 import shutil
 import subprocess
+from os import getcwd as cwd
 
 #shell builtin commands
 SHELL_BUILTINS = [
@@ -28,6 +29,9 @@ def handle_input(input_args):
             #handle echo
             case 'echo':
                 print(' '.join(input_args[1:]))
+                
+            case 'pwd':
+                print(cwd())
             
             #handle type
             case 'type':
